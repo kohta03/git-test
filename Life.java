@@ -11,6 +11,6 @@ public abstract class Life {
 	}
 
 	abstract void dead(int hp);
-	
+
 }
 
