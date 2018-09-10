@@ -1,12 +1,13 @@
-abstract class Character extends Life {
+public abstract class Character extends Life {
 
 	private int lv;
 	private String name;
 	private Weapon weapon;
 
-	Character(int lv, String name){
+	Character(int lv, String name, Weapon weapon){
 		this.lv = lv;
 		this.name = name;
+		this.weapon = weapon;
 	}
 
 	abstract int attack(int hp);
