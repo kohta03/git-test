@@ -2,7 +2,6 @@ public abstract class Character extends Life {
 
 	private int lv;
 	private String name;
-	private Weapon weapon;
 
 	Character(int lv, String name){
 		this.lv = lv;
@@ -33,14 +32,6 @@ public abstract class Character extends Life {
 		}else {
 			this.name = name;
 		}
-	}
-
-	public Weapon getWeapon() {
-		return weapon;
-	}
-
-	public void setWeapon(Weapon weapon) {
-		this.weapon = weapon;
 	}
 
 }}
