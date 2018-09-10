@@ -4,10 +4,9 @@ public abstract class Character extends Life {
 	private String name;
 	private Weapon weapon;
 
-	Character(int lv, String name, Weapon weapon){
+	Character(int lv, String name){
 		this.lv = lv;
 		this.name = name;
-		this.weapon = weapon;
 	}
 
 	abstract int attack(int hp);
@@ -17,7 +16,11 @@ public abstract class Character extends Life {
 	}
 
 	public void setLv(int lv) {
-		this.lv = lv;
+		if(lv >= 1) {
+			this.lv = lv;
+		}else {
+			System.out.println("1以上を入力してください");
+		}
 	}
 
 	public String getName() {
@@ -25,7 +28,19 @@ public abstract class Character extends Life {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if(name == null || name.length() <= 1 || name.length() >= 8){
+			System.out.println("0文字以上, 8文字以下で入力してください");
+		}else {
+			this.name = name;
+		}
 	}
 
-}
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+
+}}
