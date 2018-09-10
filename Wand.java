@@ -12,7 +12,7 @@ public class Wand extends Weapon {
 	}
 	
 	int Throw(int hp) {
-		Rundom rnd = new Random();
+		Random rnd = new Random();
 		int i = rnd.nextInt(2) + 1;
 		
 		if(i % 2 == 2){
