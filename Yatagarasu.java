@@ -6,6 +6,10 @@ public class Yatagarasu extends Monster implements Bird {
 	public void run() {
 		System.out.println("八咫烏は逃げ出した！");
 	}
+	@Override
+	public void fry() {
+		System.out.println("八咫烏は飛び出した！");
+	}
 
 	@Override
 	int attack(int hp) {
@@ -17,10 +21,12 @@ public class Yatagarasu extends Monster implements Bird {
 	}
 
 	@Override
-	void dead(int hp) {
+	int dead(int hp) {
 		if(hp <= 0) {
 			System.out.println("八咫烏は倒れた...");
+			return getExp();
 		}
+		return 0;
 	}
 
 }
