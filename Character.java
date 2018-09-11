@@ -1,9 +1,11 @@
 public abstract class Character extends Life {
 
-	private int lv;
 	private String name;
+	private int lv;
 
-	Character(int lv, String name){
+	private int expPoint = 0;
+
+	Character(String name, int lv){
 		this.lv = lv;
 		this.name = name;
 	}
@@ -34,4 +36,12 @@ public abstract class Character extends Life {
 		}
 	}
 
-}}
+	public int getExpPoint() {
+		return expPoint;
+	}
+
+	public void setExpPoint(int expPoint) {
+		this.expPoint = expPoint;
+	}
+
+}
