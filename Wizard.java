@@ -33,4 +33,9 @@ public class Wizard extends Character implements Human {
 		this.wand = wand;
 		System.out.println(this.getName() + "は" + wand.getName() + "を装備した");
 	}
+
+	@Override
+	public void talk() {
+		System.out.println("元気ですか");
+	}
 }
