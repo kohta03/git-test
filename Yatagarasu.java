@@ -21,11 +21,12 @@ public class Yatagarasu extends Monster implements Bird {
 	}
 
 	@Override
-	void dead(int hp) {
+	int dead(int hp) {
 		if(hp <= 0) {
 			System.out.println("八咫烏は倒れた...");
+			return getExp();
 		}
-		return getExp();
+		return 0;
 	}
 
 }
