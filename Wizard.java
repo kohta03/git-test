@@ -53,4 +53,5 @@ public class Wizard extends Character implements Human {
 			}
 			return lv;
 		}
+
 }

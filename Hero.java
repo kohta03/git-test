@@ -33,4 +33,9 @@ public class Hero extends Character implements Human {
 		this.sword = sword;
 		System.out.println(this.getName() + "は" + sword.getName() + "を装備した");
 	}
+
+	@Override
+	public void talk() {
+		System.out.println("今日もいい天気ですね");
+	}
 }
