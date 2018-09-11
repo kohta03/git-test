@@ -53,4 +53,5 @@ public class Hero extends Character implements Human {
 		}
 		return lv;
 	}
+
 }
