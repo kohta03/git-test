@@ -7,7 +7,7 @@ public class Yatagarasu extends Monster implements Bird {
 		System.out.println("八咫烏は逃げ出した！");
 	}
 	@Override
-	public void fry() {
+	public void fly() {
 		System.out.println("八咫烏は飛び出した！");
 	}
 
