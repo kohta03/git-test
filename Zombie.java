@@ -24,7 +24,6 @@ public class Zombie extends Monster implements Human {
 	public int dead(int hp) {
 		if(hp <= -100) {
 			System.out.println("ゾンビは倒れた...");
-			System.out.println("経験値" + this.getExp() + "を手に入れた");
 
 			return this.getExp();
 		}
