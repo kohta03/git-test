@@ -1,5 +1,4 @@
-package monster;
-
+﻿
 import java.util.Random;
 
 public class Hagetaka extends Monster implements Bird {
@@ -24,10 +23,12 @@ public class Hagetaka extends Monster implements Bird {
 	}
 
 	@Override
-	void dead(int hp) {
+	int  dead(int hp) {
 		if(hp <= 0) {
 			System.out.println("ハゲタカは倒れた...");
+			return getExp;	
 		}
+		return 0;
 	}
 
 }
