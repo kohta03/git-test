@@ -10,6 +10,6 @@ public abstract class Life {
 		this.hp = hp;
 	}
 
-	abstract void dead(int hp);
-}
+	abstract int dead(int hp);
 
+}
