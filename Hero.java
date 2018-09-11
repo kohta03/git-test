@@ -5,7 +5,11 @@ public class Hero extends Character implements Human {
 	private Sword sword;
 
 	Hero(int lv, String name) {
-		super(lv, name);
+		super(name, lv);
+	}
+
+	Hero() {
+		super("ななしさん", 1);
 	}
 
 	@Override
@@ -23,10 +27,11 @@ public class Hero extends Character implements Human {
 	}
 
 	@Override
-	void dead(int hp) {
+	int dead(int hp) {
 		if(hp <= 0) {
 			System.out.println(super.getName() + "は倒れた...");
 		}
+		return 0;
 	}
 
 	public void quipmentSword(Sword sword) {
@@ -38,4 +43,15 @@ public class Hero extends Character implements Human {
 	public void talk() {
 		System.out.println("今日もいい天気ですね");
 	}
+
+	//レベルアップ
+	public int levelUp(int exp, int lv, int hp) {
+		if(this.getExpPoint() + exp >= 100) {
+			lv += 1;
+			this.setHp(100);
+			return lv;
+		}
+		return lv;
+	}
+
 }
