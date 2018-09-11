@@ -25,6 +25,7 @@ public class Yatagarasu extends Monster implements Bird {
 		if(hp <= 0) {
 			System.out.println("八咫烏は倒れた...");
 		}
+		return getExp();
 	}
 
 }
