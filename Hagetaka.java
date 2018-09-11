@@ -18,7 +18,7 @@ public class Hagetaka extends Monster implements Bird {
 		Random rnd = new Random();
 		int i = rnd.nextInt(100) + 1;
 		hp -= i;
-		System.out.println("ハゲタカのの攻撃" + i + "のダメージ！");
+		System.out.println("ハゲタカの攻撃" + i + "のダメージ！");
 		return hp;
 	}
 
@@ -26,7 +26,7 @@ public class Hagetaka extends Monster implements Bird {
 	int  dead(int hp) {
 		if(hp <= 0) {
 			System.out.println("ハゲタカは倒れた...");
-			return getExp;	
+			return getExp();	
 		}
 		return 0;
 	}
