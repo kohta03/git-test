@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Hero extends Character implements Human {
 
-	private Sword sword;
+	public Sword sword;
 
 	Hero(String name, int lv) {
 		super(name, lv);
@@ -47,11 +47,15 @@ public class Hero extends Character implements Human {
 		Scanner scanner = new Scanner(System.in);
 		String s_name = scanner.next();
 		int s_power = Integer.parseInt(scanner.next());
-
-		Sword sword = new Sword(s_name, s_power);
-		this.sword = sword;
-		System.out.println(this.getName() + "は" + sword.getName() + "を装備した");
-		return true;
+		if(s_power <= 0) {
+			System.out.println("攻撃力が低すぎて装備できません");
+			return false;
+		}else {
+			Sword sword = new Sword(s_name, s_power);
+			this.sword = sword;
+			System.out.println(this.getName() + "は" + sword.getName() + "を装備した");
+			return true;
+		}
 	}
 
 	@Override
