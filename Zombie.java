@@ -2,6 +2,10 @@ import java.util.Random;
 
 public class Zombie extends Monster implements Human {
 
+	Zombie(String name, int hp) {
+		super(name, hp);
+	}
+
 
 	//Zombieのコンストラクタ
 	Zombie(String name, int hp) {
@@ -18,6 +22,7 @@ public class Zombie extends Monster implements Human {
 
 
 	//ゾンビ逃げ出す
+
 	@Override
 	public void run() {
 		System.out.println("ゾンビは逃げ出した");
@@ -50,6 +55,7 @@ public class Zombie extends Monster implements Human {
 	@Override
 	public void talk() {
 		System.out.println("ｱｧｱｧｧｧｧ～～");
+
 	}
 
 }
