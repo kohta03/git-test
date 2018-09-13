@@ -1,10 +1,11 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Hero extends Character implements Human {
 
 	private Sword sword;
 
-	Hero(int lv, String name) {
+	Hero(String name, int lv) {
 		super(name, lv);
 	}
 
@@ -18,11 +19,15 @@ public class Hero extends Character implements Human {
 	}
 
 	@Override
-	int attack(int hp) {
-		Random rnd = new Random();
-		int i = rnd.nextInt(10) + 1;
-		hp -= i;
-		System.out.println(super.getName() + "の攻撃" + i + "のダメージ！");
+	int attack(int hp, boolean flg) {
+		if(flg) {
+			hp = sword.attack(hp);
+		}else {
+			Random rnd = new Random();
+			int i = rnd.nextInt(10) + 1;
+			hp -= i;
+			System.out.println(super.getName() + "の攻撃" + i + "のダメージ！");
+		}
 		return hp;
 	}
 
@@ -34,9 +39,19 @@ public class Hero extends Character implements Human {
 		return 0;
 	}
 
-	public void quipmentSword(Sword sword) {
+	//剣装備
+	public boolean quipmentSword() {
+
+		//装備品の名前、強さを入力
+		System.out.println("装備する剣と強さを入力してください");
+		Scanner scanner = new Scanner(System.in);
+		String s_name = scanner.next();
+		int s_power = Integer.parseInt(scanner.next());
+
+		Sword sword = new Sword(s_name, s_power);
 		this.sword = sword;
 		System.out.println(this.getName() + "は" + sword.getName() + "を装備した");
+		return true;
 	}
 
 	@Override
@@ -48,7 +63,7 @@ public class Hero extends Character implements Human {
 	public int levelUp(int exp, int lv, int hp) {
 		if(this.getExpPoint() + exp >= 100) {
 			lv += 1;
-			this.setHp(100);
+			this.setHp(this.getMaxHp());
 			return lv;
 		}
 		return lv;
