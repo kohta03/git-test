@@ -1,11 +1,11 @@
 public class SuperHero extends Hero {
 
-	SuperHero(int lv, String name) {
-		super(lv, name);
+	SuperHero(String name, int lv) {
+		super(name, lv);
 	}
- 	int attack(int hp){
-		hp = super.attack(hp);
-		hp = super.attack(hp);
+ 	int attack(int hp, boolean flg){
+		hp = super.attack(hp, flg);
+		hp = super.attack(hp, flg);
 		return hp;
 	}
 }
