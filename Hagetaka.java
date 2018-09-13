@@ -3,6 +3,15 @@ import java.util.Random;
 
 public class Hagetaka extends Monster implements Bird {
 
+
+	Hagetaka(String name, int hp) {
+		super(name, hp);
+	}
+
+	Hagetaka() {
+		super("ハゲタカ", 200);
+	}
+
 	@Override
 	public void run() {
 		System.out.println("ハゲタカは逃げ出した！");
@@ -26,7 +35,7 @@ public class Hagetaka extends Monster implements Bird {
 	int  dead(int hp) {
 		if(hp <= 0) {
 			System.out.println("ハゲタカは倒れた...");
-			return getExp();	
+			return getExp();
 		}
 		return 0;
 	}
