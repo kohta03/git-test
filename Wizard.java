@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Wizard extends Character implements Human {
 
-	private Wand wand;
+	public Wand wand;
 
 	Wizard(String name, int lv) {
 		super(name, lv);
@@ -46,12 +46,16 @@ public class Wizard extends Character implements Human {
 		Scanner scanner = new Scanner(System.in);
 		String w_name = scanner.next();
 		int w_power = Integer.parseInt(scanner.next());
+		if(w_power <= 0) {
+			System.out.println("攻撃力が低すぎて装備できません");
+			return false;
+		}else {
+			Wand wand = new Wand(w_name, w_power);
 
-		Wand wand = new Wand(w_name, w_power);
-
-		this.wand = wand;
-		System.out.println(this.getName() + "は" + wand.getName() + "を装備した");
-		return true;
+			this.wand = wand;
+			System.out.println(this.getName() + "は" + wand.getName() + "を装備した");
+			return true;
+		}
 	}
 
 	@Override
@@ -64,6 +68,7 @@ public class Wizard extends Character implements Human {
 
 			if(this.getExpPoint() + exp >= 100) {
 				lv += 1;
+				this.setLv(lv);
 				this.setHp(this.getMaxHp());
 				System.out.println(this.getName() + "のレベルが上がりました！");
 				System.out.println(this.getName() + "の体力が全回復しました！");
