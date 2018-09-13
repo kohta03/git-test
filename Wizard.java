@@ -1,10 +1,11 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Wizard extends Character implements Human {
 
 	private Wand wand;
 
-	Wizard(int lv, String name) {
+	Wizard(String name, int lv) {
 		super(name, lv);
 	}
 
@@ -18,11 +19,15 @@ public class Wizard extends Character implements Human {
 	}
 
 	@Override
-	int attack(int hp) {
-		Random rnd = new Random();
-		int i = rnd.nextInt(5) + 1;
-		hp -= i;
-		System.out.println(super.getName() + "の攻撃" + i + "のダメージ！");
+	int attack(int hp, boolean flg) {
+		if(flg) {
+			hp = wand.attack(hp);
+		}else {
+			Random rnd = new Random();
+			int i = rnd.nextInt(5) + 1;
+			hp -= i;
+			System.out.println(super.getName() + "の攻撃" + i + "のダメージ！");
+		}
 		return hp;
 	}
 
@@ -34,9 +39,19 @@ public class Wizard extends Character implements Human {
 		return 0;
 	}
 
-	public void quipmentWand(Wand wand) {
+	//杖装備
+	public boolean quipmentWand() {
+		//装備品の名前、強さを入力
+		System.out.println("装備する杖と強さを入力してください");
+		Scanner scanner = new Scanner(System.in);
+		String w_name = scanner.next();
+		int w_power = Integer.parseInt(scanner.next());
+
+		Wand wand = new Wand(w_name, w_power);
+
 		this.wand = wand;
 		System.out.println(this.getName() + "は" + wand.getName() + "を装備した");
+		return true;
 	}
 
 	@Override
@@ -46,12 +61,13 @@ public class Wizard extends Character implements Human {
 
 	//レベルアップ
 		public int levelUp(int exp, int lv, int hp) {
+
 			if(this.getExpPoint() + exp >= 100) {
 				lv += 1;
-				this.setHp(100);
-				return lv;
+				this.setHp(this.getMaxHp());
+				System.out.println(this.getName() + "のレベルが上がりました！");
+				System.out.println(this.getName() + "の体力が全回復しました！");
 			}
 			return lv;
 		}
-
 }
