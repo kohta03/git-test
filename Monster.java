@@ -5,8 +5,22 @@ abstract class Monster extends Life {
 	private int exp = 100;
 
 	Monster(String name, int hp){
-		this.name = name;
-		this.hp = hp;
+
+		if(name.length() > 0) {
+			this.name = name;
+		}else if(name.length() <= 0) {
+			System.out.println("初期設定エラー : NAMEが入力されていません。名前を テストモンスター にします。");
+			this.name = "テストモンスター";
+		}
+
+		//HPの判定
+		if(hp > 0) {
+			this.hp = hp;
+		}else if( hp < 0 ) {
+			System.out.println("初期設定エラー : HPにマイナス値が設定されました。100を代入します。");
+			this.hp = 100;
+		}
+
 	};
 
 	public String getName() {
