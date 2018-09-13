@@ -2,15 +2,29 @@ public abstract class Character extends Life {
 
 	private String name;
 	private int lv;
-
+	private int hp;
+	private int maxHp;
+	private boolean flg = false;
 	private int expPoint = 0;
 
 	Character(String name, int lv){
-		this.lv = lv;
 		this.name = name;
+		this.lv = lv;
+		this.hp = lv * 3;
+		this.maxHp = hp;
 	}
 
-	abstract int attack(int hp);
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		if(name == null || name.length() <= 1 || name.length() >= 8){
+			throw new IllegalArgumentException("0文字以上, 8文字以下で入力してください");
+		}else {
+			this.name = name;
+		}
+	}
 
 	public int getLv() {
 		return lv;
@@ -20,20 +34,24 @@ public abstract class Character extends Life {
 		if(lv >= 1) {
 			this.lv = lv;
 		}else {
-			System.out.println("1以上を入力してください");
+			throw new IllegalArgumentException("１レベル以上で入力してください");
 		}
 	}
 
-	public String getName() {
-		return name;
+	public int getHp() {
+		return hp;
 	}
 
-	public void setName(String name) {
-		if(name == null || name.length() <= 1 || name.length() >= 8){
-			System.out.println("0文字以上, 8文字以下で入力してください");
-		}else {
-			this.name = name;
-		}
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
 	}
 
 	public int getExpPoint() {
@@ -43,5 +61,17 @@ public abstract class Character extends Life {
 	public void setExpPoint(int expPoint) {
 		this.expPoint = expPoint;
 	}
+
+	public boolean isFlg() {
+		return flg;
+	}
+
+	public void setFlg(boolean flg) {
+		this.flg = flg;
+	}
+
+	abstract int attack(int hp, boolean flg);
+
+	abstract public int levelUp(int exp, int lv, int hp);
 
 }
